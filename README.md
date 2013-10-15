@@ -21,12 +21,12 @@
 つぶやきを管理するテーブル(posts)    
 ----
 
-| id         | INT     |   
-| user_name　| VERCHAR |   
-| tweet      | TEXT    |  
-| address    | VERCHAR |  
-| created    | DATE    |  
-| modifed    | DATE    |  
+    | id         | INT     |   
+    | user_name　| VERCHAR |   
+    | tweet      | TEXT    |  
+    | address    | VERCHAR |  
+    | created    | DATE    |  
+    | modifed    | DATE    |  
 
 ----
 
