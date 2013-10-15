@@ -20,7 +20,7 @@
 
 つぶやきを管理するテーブル(posts)    
 ----
-
+    | 列名       | 種類    | 詳細       |
     | id         | INT     | id         |  
     | user_name　| VERCHAR | ユーザー名 |  
     | tweet      | TEXT    | 呟き       |  
