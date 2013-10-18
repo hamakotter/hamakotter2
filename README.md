@@ -1,39 +1,64 @@
-CakePHP
-=======
+#仕様
+*つぶやける  
+*NGできてハッピー  
+*ツイ消し  
+*つぶやき規制  
+*NGできてハッピー  
 
-[![CakePHP](http://cakephp.org/img/cake-logo.png)](http://www.cakephp.org)
+#仕様 
+* つぶやける  
+* NGできてハッピー  
+* ツイ消し  
+* つぶやき規制  
 
-CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.
-Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
+#ファイル名  
+* PostsController.php (Controller)
+* Post.php (Model)
+* Posts.ctp (View)
 
-Some Handy Links
-----------------
+#テーブル(カッコ内はテーブル名)    
 
-[CakePHP](http://www.cakephp.org) - The rapid development PHP framework
+つぶやきを管理するテーブル(posts)    
+----
+    | 列名       | 種類    | 詳細       |
+    | id         | INT     | id         |  
+    | user_name　| VERCHAR | ユーザー名 |  
+    | tweet      | TEXT    | 呟き       |  
+    | address    | VERCHAR | IPアドレス |  
+    | created    | DATE    | 作成日時   |  
+    | modifed    | DATE    | 修正日時   |  
 
-[Cookbook](http://book.cakephp.org) - THE Cake user documentation; start learning here!
+----
 
-[Plugins](http://plugins.cakephp.org/) - A repository of extensions to the framework
+NGユーザーを管理する(ng_users)  
+----
 
-[The Bakery](http://bakery.cakephp.org) - Tips, tutorials and articles
+| id | IPアドレス |  
 
-[API](http://api.cakephp.org) - A reference to Cake's classes
+----
 
-[CakePHP TV](http://tv.cakephp.org) - Screen casts from events and video tutorials
+NGワードの管理(ng_words)  
+----
 
-[The Cake Software Foundation](http://cakefoundation.org/) - promoting development related to CakePHP
+| id | NGワード |  
 
-Get Support!
-------------
+----
 
-[Our Google Group](https://groups.google.com/group/cake-php) - community mailing list and forum
+Session用のテーブル(cake_sessions)    
+----
 
-[#cakephp](http://webchat.freenode.net/?channels=#cakephp) on irc.freenode.net - Come chat with us, we have cake.
+    | 列名       | 種類    |
+    | id         | INT     | 
+    | data      　| TEXT    |
+    | expires    | INT     |
+----
 
-[Q & A](http://ask.cakephp.org/) - Ask questions here, all questions welcome
+ログイン用のユーザーテーブル(users)    
+----
 
-[Lighthouse](https://cakephp.lighthouseapp.com/) - Got issues? Please tell us!
+    | 列名       | 種類    | 詳細       |
+    | id         | INT     | id         |  
+    | username 　| VERCHAR | ユーザー名 |  
+    | password   | VERCHAR | パスワード |  
 
-[![Bake Status](https://secure.travis-ci.org/cakephp/cakephp.png?branch=master)](http://travis-ci.org/cakephp/cakephp)
-
-![Cake Power](https://raw.github.com/cakephp/cakephp/master/lib/Cake/Console/Templates/skel/webroot/img/cake.power.gif)
+----
