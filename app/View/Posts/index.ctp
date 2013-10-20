@@ -1,23 +1,25 @@
 <html>
-<head></head>
+<head>
+</head>
 <body>
 	<h1>tweets</h1>
-	<?php
-	echo $this->Form->create('Post',array('action' => 'add'));
-	echo $this->Form->hidden('user_name', array('value'=>'Admin'));
-	echo $this->Form->input('tweet',array('rows'=>3));
-	echo $this->Form->hidden('address',array('value' => '192.168.11.1'));
-	echo $this->Form->end('Post');
+  <div id="tweet-form">
+    <?php
+//	echo $this->Form->create('Post',array('action' => 'add'));
+    echo $this->Form->input('user_name', array('value'=>'!!NANASHI!!'));
+    echo $this->Form->input('tweet',array('rows'=>3));
+//	echo $this->Form->hidden('address',array('value' => '192.168.11.1'));
+//	echo $this->Form->end('Post');
 ?>
-	<table>
-		<?php $posts = array_reverse($posts); ?>
-		<?php foreach ($posts as $value): ?>
-		<tr>
-			<td>
-				<?php echo $value['Post']['tweet'];?>
-			</td>
-		</tr>
-		<?php endforeach; ?>
-		<?php unset($post); ?></table>
+    <button id="tweet-btn">つぶやく</button>
+  </div>
+	<table id="tweets">
+  </table>
+  <button id="old-tweets-btn">過去の</button>
+<?php
+  echo $this->Html->script('jquery.min');
+  echo $this->Html->script('lib');
+  echo $this->Html->script('data');
+?>
 </body>
 </html>
