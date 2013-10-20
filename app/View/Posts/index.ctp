@@ -9,6 +9,7 @@
 	echo $this->Form->hidden('address',array('value' => '192.168.11.1'));
 	echo $this->Form->end('Post');
 ?>
+	<?php debug($ng); ?>
 	<table>
 		<?php $posts = array_reverse($posts); ?>
 		<?php foreach ($posts as $value): ?>
