@@ -3,6 +3,7 @@ var lib = {
     tweets : '/hamakotter2/posts.json',
     tweetsNew : '/hamakotter2/posts/newer.json',
     tweetsOld : '/hamakotter2/posts/older.json',
+    tweet : '/hamakotter2/posts/add',
 	},
 	getAjax:function(url,data,type,dataType,async,error,success,complete){
 		return $.ajax({

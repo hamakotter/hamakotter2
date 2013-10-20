@@ -17,7 +17,7 @@ class PostsController extends AppController{
   public function older() {
     $params = array(
       'conditions' => array('Post.id <'=>$this->params['url']['o']),
-      'limit' => 3,
+      'limit' => 10,
       'order' => array('Post.id DESC'),
     );
     $this->set('posts', $this->Post->find('all',$params));
@@ -27,7 +27,7 @@ class PostsController extends AppController{
 	public function index(){
     //*
     $params = array(
-      'limit' => 3,
+      'limit' => 10,
       'order' => array('Post.id DESC'),
     );
     //*/
@@ -39,11 +39,13 @@ class PostsController extends AppController{
 	public function add(){
 		if($this->request->is('post')){
 			$this->Post->create();
+      $this->request->data['Post']['address'] = $this->request->clientIp(false);
 			if($this->Post->save($this->request->data)){
-				$this->Session->setFlash(__('Success!'));
-				return $this->redirect(array('action'=>'index'));
-			}
-			$this->Session->setFlash(__('Failed'));
+        $this->set('posts',array('res'=>'0',$this->request->data));
+			} else {
+        $this->set('posts',array('res'=>'1'));
+      }
+      $this->set('_serialize', array('posts'));
 		}
 	}
 

@@ -1,11 +1,9 @@
-//(function(){
+(function(){
 
 var hm = {
   latest : 0,
   oldest : 0,
   initialize : function() {
-    //(url,data,type,dataType,async,error,success,complete){
-    //lib.getAjax(lib.data.SRV+'/mylists.json',{p:lib.data.P},'get','json',true,function(){},function(res){
     lib.getAjax(lib.t.tweets,{},'get','json',true,function(){},function(res){
       var tweets = hm.prepareTweet(res['posts']);
       $('#tweets').append(tweets.join('\n'));
@@ -18,8 +16,9 @@ var hm = {
     $.each(json,function(v,w) {
       var tweet = '';
       tweet += '<tr id="tweet'+w.Post.id+'" tweet-id="'+w.Post.id+'">';
-      tweet += '<td>'+w.Post.tweet+'</td>';
       tweet += '<td>'+w.Post.user_name+'</td>';
+      tweet += '<td>'+w.Post.tweet+'</td>';
+//      tweet += '<td>'+w.Post.address+'</td>';
       tweet += '</tr>';
       tweets.push(tweet);
     });
@@ -43,7 +42,22 @@ var hm = {
   },
   postTweet : function() {
     $('#tweet-btn').attr('disabled','disabled');
-    
+    $('#update-btn').attr('disabled','disabled');
+    var data = {
+      _method : 'POST',
+      'data[Post][user_name]' : $('#user_name').val(),
+      'data[Post][tweet]' : $('#tweet').val(),
+    };
+    lib.getAjax(lib.t.tweet,data,'post','json',true,function(){},function(res){
+      /*
+      console.log(res['posts'].res);
+      //res['posts'].res が 0 なら成功
+      */
+      hm.updateNew();
+      $('#tweet').val('');
+      $('#tweet-btn').removeAttr('disabled');
+      $('#update-btn').removeAttr('disabled');
+    });
   }
 };
 
@@ -53,7 +67,11 @@ $(function(){
      hm.updateOld();
   });
   $(document).on('click',"#tweet-btn",function(){
+    hm.postTweet();
+  });
+  $(document).on('click',"#update-btn",function(){
+    hm.updateNew();
   });
 });
 
-//})();
+})();
