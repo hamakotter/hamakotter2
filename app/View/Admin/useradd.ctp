@@ -6,7 +6,7 @@
 		<?php echo $this->Session->flash('auth'); ?>
 		<?php echo $this->Form->create('User', Array('url' => '/admin/useradd')); ?>
 
-		<?php echo $this->Form->input('username'); ?>
+		<?php echo $this->Form->input('username',array('rows' => 1)); ?>
 		<?php echo $this->Form->input('password'); ?>
 
 		<?php echo $this->Form->end('アカウントを作成'); ?>
