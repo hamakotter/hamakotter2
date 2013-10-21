@@ -22,7 +22,7 @@ class PostsController extends AppController{
                                 }
                         }
                         if($this->Post->save($this->request->data)){
-                                $this->Session->setFlash(__('Success!'));
+                                $this->Session->setFlash('ツイートしました。', 'default', array('class'=> 'message success'));
                                 return $this->redirect(array('action'=>'index'));
                         }
                         $this->Session->setFlash(__('Failed'));
