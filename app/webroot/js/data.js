@@ -4,6 +4,7 @@ var hm = {
   latest : 0,
   oldest : 0,
   initialize : function() {
+    console.log("initialize");
     lib.getAjax(lib.t.tweets,{},'get','json',true,function(){},function(res){
       var tweets = hm.prepareTweet(res['posts']);
       $('#timeline').append(tweets.join('\n'));
@@ -24,11 +25,13 @@ var hm = {
       tweet += '<div class="date"><?php echo $value[\'Post\'][\'created\']; ?></div>';
       tweet += '<div class="tweet"><?php echo Sanitize::html($value[\'Post\'][\'tweet\'],array(\'remove\' => true)) ?> </div>';
       tweet += '</div>'
+      /*
       tweet += '<tr id="tweet'+w.Post.id+'" tweet-id="'+w.Post.id+'">';
       tweet += '<td>'+w.Post.user_name+'</td>';
       tweet += '<td>'+w.Post.tweet+'</td>';
 //      tweet += '<td>'+w.Post.address+'</td>';
       tweet += '</tr>';
+      */
       tweets.push(tweet);
     });
     return tweets;
@@ -48,15 +51,16 @@ var hm = {
 
 $(function(){
   hm.initialize();
+});
+
   $(window).on("scroll", function() {
   var scrollHeight = $(document).height();
   var scrollPosition = $(window).height() + $(window).scrollTop();
-  if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-    hm.initialize();
-    hm.updateOld();
-      // when scroll to bottom of the page
-  }
-});
+    if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+      hm.updateOld();
+       // when scroll to bottom of the page
+    }
+  });
 
 
 })();
