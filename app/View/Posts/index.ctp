@@ -4,14 +4,13 @@
 <head>
 	<?php
 		echo $this->Html->css('pc');
-		echo $this->Html->script('prototype');
 		echo $this->Html->script('jquery.min');
  		echo $this->Html->script('lib');
   		echo $this->Html->script('data');
 	?>
 	<!-- Ajax -->
+	<!--
 	<script type="text/javascript">
-		jQuery.noConflict();
 		/*
 		new Ajax.PeriodicalUpdater(
 			"timeline","http://festival.hamako-ths.ed.jp/cakephp/posts/timeline",{
@@ -22,6 +21,7 @@
 		);
 		*/
 	</script>
+-->
 </head>
 <body>
 
